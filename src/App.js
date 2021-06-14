@@ -12,7 +12,7 @@ function App() {
     <Router>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <a href="/tutorials" className="navbar-brand">
-          bezKoder
+          Tutorial " /tutorial "
         </a>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
