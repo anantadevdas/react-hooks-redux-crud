@@ -1,5 +1,5 @@
 body{
-    background:linear-gradient(to left, green, white);
+    background:linear-gradient(to left, rgb(14, 210, 236), white);
     margin:0;
     padding:0;
     box-sizing:border-box;
