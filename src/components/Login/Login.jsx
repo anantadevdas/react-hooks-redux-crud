@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom'
+import { Icon, Input } from 'semantic-ui-react'
 import "./LoginStyle.css"
 
 
@@ -8,16 +9,53 @@ class LoginComponent extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { LoginState: {} }
+        this.state = {
+            LoginState: {},
+            register: false,
+            login: true,
+            userNameValue:"",
+            passwordValue:"",
+            verifyPasswordValue:""
+        }
     }
 
-    // render() {
-    //     return (
-    //         <div className="Login"></div> 
-    //     )
+    register = (args) => {
+        if (args === 'register') {
+            this.setState({
+                register: true,
+                login: false
+            })
+        }
+    }
+    login = (args) => {
+        if (args === 'login') {
+            this.setState({
+                register: false,
+                login: true
+            })
+        }
+    }
 
-    // }
+    registerUser =()=>{
+        console.log("register user", this.state)
+    }
+    loginUser =()=>{
+        console.log("login user", this.state)
+    }
+    userNameInput =(event) =>{
+        this.setState({userNameValue: event.target.value});
+    }
+
+    passwordInput =(event) =>{
+        this.setState({passwordValue: event.target.value});
+    }
+
+    verifyPasswordInput =(event) =>{
+        this.setState({verifyPasswordValue: event.target.value});
+    }
+
     render() {
+        console.log('state ', this.state)
         return (
             <div className="container">
                 <div className="form-box">
@@ -27,23 +65,41 @@ class LoginComponent extends Component {
                         </div>
                     </div>
                     <div className="body-form">
-                        <form>
+                        {/* <div className="image_placeholder_div">
+                        </div> */}
+                        <form className="form">
                             <div className="input-group mb-3">
+                                {/* <div style={{"height":"200px", "width":"200px"}}><i class="user circle outline icon"></i></div> */}
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"><i class="fa fa-user"></i></span>
                                 </div>
-                                <input type="text" className="form-control" placeholder="Username" />
+                                <input type="text"  value={this.state.userNameValue} onChange={this.userNameInput} className="form-control" placeholder="Username" />
+
                             </div>
                             <div className="input-group mb-3">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"><i class="fa fa-lock"></i></span>
                                 </div>
-                                <input type="text" className="form-control" placeholder="Password" />
+                                <input type="password" value={this.state.passwordValue} onChange={this.passwordInput} className="form-control" placeholder="Password" />
                             </div>
-                            <button type="button" className="btn btn-secondary btn-block">LOGIN</button>
-                            <div className="message">
+                            {this.state.register ? <div className="input-group mb-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"><i class="fa fa-lock"></i></span>
+                                </div>
+                                <input type="password" value={this.state.verifyPasswordValue} onChange={this.verifyPasswordInput} className="form-control" placeholder="Verify Password" />
+                            </div> : null}
+
+                            {this.state.register ? <button type="button" onClick={this.registerUser} className="btn btn-secondary btn-block">{"REGISTER"}</button> : null}
+
+                            {this.state.login ? <button type="button" onClick={this.loginUser} className="btn btn-secondary btn-block">{"LOGIN"}</button> : null}
+
+                            {/* <div className="message">
                                 <div><input type="checkbox" /> Remember ME</div>
-                                <div><a href="#">Forgot your password</a></div>
+                                <div><a href="#">Forgot password</a></div>
+                            </div> */}
+                            <div className="message">
+                                <div> <a onClick={() => this.login('login')} href="#">Login</a></div>
+                                <div><a onClick={() => this.register('register')} href="#">Register</a></div>
                             </div>
                         </form>
                         <div className="social">
