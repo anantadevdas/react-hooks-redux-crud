@@ -31,7 +31,9 @@ class App extends React.Component {
         >
           <SubMenu key="SubMenu" icon={<MenuOutlined />} title="Menu">
             <Menu.ItemGroup title="Profile">
-              <Menu.Item key="setting:1" icon={<AuditOutlined />}>Admin Profile</Menu.Item>
+              <Menu.Item key="setting:1" icon={<AuditOutlined />}>
+                <Link to={"/admin"}>Admin Profile </Link>
+              </Menu.Item>
               <Menu.Item key="setting:2" icon={<UsergroupAddOutlined />}>User Profile</Menu.Item>
             </Menu.ItemGroup>
             <Menu.ItemGroup title="Dashboard">
