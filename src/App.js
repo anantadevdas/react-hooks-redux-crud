@@ -10,6 +10,7 @@ import AddTutorial from "./components/AddTutorial";
 import Tutorial from "./components/Tutorial";
 import TutorialsList from "./components/TutorialsList";
 import { Login } from "./components/Login";
+import {Admin} from "./components/Admin"
 
 const { SubMenu } = Menu;
 
@@ -44,7 +45,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
             <Route exact path="/login" component={Login} />
-            {/* <Route exact path="/dashboard" component={Dashboard} /> */}
+            <Route exact path="/admin" component={Admin} />
             <Route exact path="/add" component={AddTutorial} />
             <Route path="/tutorials/:id" component={Tutorial} />
           </Switch>
