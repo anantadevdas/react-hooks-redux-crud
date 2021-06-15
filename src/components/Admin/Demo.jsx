@@ -1,96 +1,171 @@
-import React, { Component } from 'react';
-import { connect } from "react-redux";
-import { withRouter } from 'react-router-dom'
+import ReactDOM from 'react-dom'
 
-import { Form, Input, Button, Space, Select } from 'antd';
-import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
-const { Option } = Select;
+import React, { useState, useEffect } from 'react';
+import { 
+  Form, Input, Button, Checkbox,
+  DatePicker, Space 
+} from 'antd';
 
-const areas = [
-  { label: 'Beijing', value: 'Beijing' },
-  { label: 'Shanghai', value: 'Shanghai' },
-];
 
-const sights = {
-  Beijing: ['Tiananmen', 'Great Wall'],
-  Shanghai: ['Oriental Pearl', 'The Bund'],
+const formItemLayout = {
+  labelCol: {
+    span: 4,
+  },
+  wrapperCol: {
+    span: 8,
+  },
 };
+const formTailLayout = {
+  labelCol: {
+    span: 4,
+  },
+  wrapperCol: {
+    span: 8,
+    offset: 4,
+  },
+};
+
+function onChange(date, dateString) {
+  console.log(date, dateString);
+}
 
 const Demo = () => {
   const [form] = Form.useForm();
+  const [checkNick, setCheckNick] = useState(false);
+  useEffect(() => {
+    form.validateFields(['nickname']);
+  }, [checkNick]);
 
-  const onFinish = values => {
-    console.log('Received values of form:', values);
+  const onCheckboxChange = (e) => {
+    setCheckNick(e.target.checked);
   };
 
-  const handleChange = () => {
-    form.setFieldsValue({ sights: [] });
+  const onCheck = async () => {
+    try {
+      const values = await form.validateFields();
+      console.log('Success:', values);
+    } catch (errorInfo) {
+      console.log('Failed:', errorInfo);
+    }
   };
 
   return (
-    <Form form={form} name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="off">
-      <Form.Item name="area" label="Area" rules={[{ required: true, message: 'Missing area' }]}>
-        <Select options={areas} onChange={handleChange} />
+    <Form form={form} name="dynamic_rule">
+      <Form.Item
+        {...formItemLayout}
+        name="FullName"
+        label="Full Name"
+        rules={[
+          {
+            required: true,
+            message: 'Please input your full name',
+          },
+        ]}
+      >
+        <Input placeholder="Please input your name" />
       </Form.Item>
-      <Form.List name="sights">
-        {(fields, { add, remove }) => (
-           
-            {fields.map(field => (
-              <Space key={field.key} align="baseline">
-                <Form.Item
-                  noStyle
-                  shouldUpdate={(prevValues, curValues) =>
-                    prevValues.area !== curValues.area || prevValues.sights !== curValues.sights
-                  }
-                >
-                  {() => (
-                    <Form.Item
-                      {...field}
-                      label="Sight"
-                      name={[field.name, 'sight']}
-                      fieldKey={[field.fieldKey, 'sight']}
-                      rules={[{ required: true, message: 'Missing sight' }]}
-                    >
-                      <Select disabled={!form.getFieldValue('area')} style={{ width: 130 }}>
-                        {(sights[form.getFieldValue('area')] || []).map(item => (
-                          <Option key={item} value={item}>
-                            {item}
-                          </Option>
-                        ))}
-                      </Select>
-                    </Form.Item>
-                  )}
-                </Form.Item>
-                <Form.Item
-                  {...field}
-                  label="Price"
-                  name={[field.name, 'price']}
-                  fieldKey={[field.fieldKey, 'price']}
-                  rules={[{ required: true, message: 'Missing price' }]}
-                >
-                  <Input />
-                </Form.Item>
+      
+      <Form.Item
+        {...formItemLayout}
+        name="PhoneNumber"
+        label="Phone Number"
+        rules={[
+          {
+            required: true,
+            message: 'Please enter your phone number',
+          },
+        ]}
+      ><Input placeholder="Please input your phone number" />
+      </Form.Item>
 
-                <MinusCircleOutlined onClick={() => remove(field.name)} />
-              </Space>
-            ))}
+      <Form.Item
+        {...formItemLayout}
+        name="Email"
+        label="Email"
+        rules={[
+          {
+            required: true,
+            message: 'Please enter your Email',
+          },
+        ]}
+      ><Input placeholder="Please input your Email" />
+      </Form.Item>
 
-            <Form.Item>
-              <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
-                Add sights
-              </Button>
-            </Form.Item>
-          </>
-        )}
-      </Form.List>
-      <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Submit
+      <Form.Item
+        {...formItemLayout}
+        name="Address"
+        label="Address"
+        rules={[
+          {
+            required: true,
+            message: 'Please enter your current address',
+          },
+        ]}
+      ><Input placeholder="Please input your current address" />
+      </Form.Item>
+      <Form.Item
+        {...formItemLayout}
+        name="Company"
+        label="Company"
+        rules={[
+          {
+            required: true,
+            message: 'Please enter your current company',
+          },
+        ]}
+      ><Input placeholder="Please input your current company" />
+      </Form.Item>
+
+      <Form.Item
+        {...formItemLayout}
+        name="LinkedIn"
+        label="LinkedIn"
+        rules={[
+          {
+            required: true,
+            message: 'Please enter your LinkedIn',
+          },
+        ]}
+      ><Input placeholder="Please input your LinkedIn" />
+      </Form.Item>
+      <Form.Item
+        {...formItemLayout}
+        name="Twitter"
+        label="Twitter"
+        rules={[
+          {
+            required: true,
+            message: 'Please enter your current Twitter',
+          },
+        ]}
+      ><Input placeholder="Please input your current Twitter" />
+      </Form.Item>
+      <Form.Item
+        {...formItemLayout}
+        name="DateOfBirth"
+        label="Date Of Birth"
+        rules={[
+          {
+            required: false,
+            message: 'Please enter your date of birth',
+          },
+        ]}
+      ><Input placeholder="Please input your date of birth" />
+      </Form.Item>
+      {/* <Form.Item {...formTailLayout} label="Date Of Birth">
+        <DatePicker onChange={onChange} />
+      </Form.Item> */}
+
+      <Form.Item {...formTailLayout}>
+        <Button type="primary" onClick={onCheck}>
+          Check
         </Button>
       </Form.Item>
+
+      
     </Form>
   );
 };
 
-ReactDOM.render(<Demo />, mountNode);
+export default Demo;

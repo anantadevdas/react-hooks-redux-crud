@@ -3,11 +3,14 @@ import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom'
 import { Icon } from 'semantic-ui-react'
 import { Card, Col, Row,
-    Input, Space, Button, Switch        
+    Input, Space, Button, Switch,
+    Form, Radio        
 } from 'antd';
 
-import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import "./Admin.css" 
+import { InfoCircleOutlined, MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import "./Admin.css"
+
+import Demo from "./Demo"
 
 
 class AdminComponent extends Component {
@@ -18,10 +21,11 @@ class AdminComponent extends Component {
              
         }
     }
- 
+    
+    
     render() {
         console.log('state ', this.state)
-        return (<div>Admin Portal</div>)
+        return (<div className="AdminPortalSection"> <Demo /> </div>)
     }
 
     componentDidMount() {

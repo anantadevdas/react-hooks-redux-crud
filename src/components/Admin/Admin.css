@@ -1,0 +1,11 @@
+.AdminPortalSection {
+    width: 100%
+}
+
+.AdminInputForm:{
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+
