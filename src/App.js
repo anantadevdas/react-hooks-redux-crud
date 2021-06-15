@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Menu } from 'antd';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import { MenuOutlined, AuditOutlined,UsergroupAddOutlined, MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css'
 
 import AddTutorial from "./components/AddTutorial";
@@ -26,20 +26,16 @@ class App extends React.Component {
     const { current } = this.state;
     return (
       <Router>
-        <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal" className="MainNavigationMenuClass" 
+        <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal" className="MainNavigationMenuClass"
         >
-          <Menu.Item key="mail" icon={<MailOutlined />}>
-            Navigation One
-          </Menu.Item>
-
-          <SubMenu key="SubMenu" icon={<SettingOutlined />} title="Navigation Three - Submenu">
-            <Menu.ItemGroup title="Item 1">
-              <Menu.Item key="setting:1">Option 1</Menu.Item>
-              <Menu.Item key="setting:2">Option 2</Menu.Item>
+          <SubMenu key="SubMenu" icon={<MenuOutlined />} title="Menu">
+            <Menu.ItemGroup title="Profile">
+              <Menu.Item key="setting:1" icon={<AuditOutlined />}>Admin Profile</Menu.Item>
+              <Menu.Item key="setting:2" icon={<UsergroupAddOutlined />}>User Profile</Menu.Item>
             </Menu.ItemGroup>
-            <Menu.ItemGroup title="Item 2">
-              <Menu.Item key="setting:3">Option 3</Menu.Item>
-              <Menu.Item key="setting:4">Option 4</Menu.Item>
+            <Menu.ItemGroup title="Dashboard">
+              <Menu.Item key="setting:3" icon={<AuditOutlined />}>Admin Dashboard</Menu.Item>
+              <Menu.Item key="setting:4" icon={<UsergroupAddOutlined />}>User Dashboard</Menu.Item>
             </Menu.ItemGroup>
           </SubMenu>
         </Menu>
@@ -48,6 +44,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
             <Route exact path="/login" component={Login} />
+            {/* <Route exact path="/dashboard" component={Dashboard} /> */}
             <Route exact path="/add" component={AddTutorial} />
             <Route path="/tutorials/:id" component={Tutorial} />
           </Switch>
