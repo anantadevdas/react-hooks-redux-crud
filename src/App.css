@@ -13,3 +13,8 @@
   max-width: 300px;
   margin: auto;
 }
+
+.MainNavigationMenuClass{
+  align-items: center;
+  justify-content: center;
+}
