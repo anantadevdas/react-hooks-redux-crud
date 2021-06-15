@@ -13,9 +13,9 @@ class LoginComponent extends Component {
             LoginState: {},
             register: false,
             login: true,
-            userNameValue:"",
-            passwordValue:"",
-            verifyPasswordValue:""
+            userNameValue: "",
+            passwordValue: "",
+            verifyPasswordValue: ""
         }
     }
 
@@ -36,22 +36,22 @@ class LoginComponent extends Component {
         }
     }
 
-    registerUser =()=>{
+    registerUser = () => {
         console.log("register user", this.state)
     }
-    loginUser =()=>{
+    loginUser = () => {
         console.log("login user", this.state)
     }
-    userNameInput =(event) =>{
-        this.setState({userNameValue: event.target.value});
+    userNameInput = (event) => {
+        this.setState({ userNameValue: event.target.value });
     }
 
-    passwordInput =(event) =>{
-        this.setState({passwordValue: event.target.value});
+    passwordInput = (event) => {
+        this.setState({ passwordValue: event.target.value });
     }
 
-    verifyPasswordInput =(event) =>{
-        this.setState({verifyPasswordValue: event.target.value});
+    verifyPasswordInput = (event) => {
+        this.setState({ verifyPasswordValue: event.target.value });
     }
 
     render() {
@@ -73,7 +73,7 @@ class LoginComponent extends Component {
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"><i class="fa fa-user"></i></span>
                                 </div>
-                                <input type="text"  value={this.state.userNameValue} onChange={this.userNameInput} className="form-control" placeholder="Username" />
+                                <input type="text" value={this.state.userNameValue} onChange={this.userNameInput} className="form-control" placeholder="Username" />
 
                             </div>
                             <div className="input-group mb-3">
