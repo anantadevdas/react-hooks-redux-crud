@@ -2,11 +2,11 @@ import ReactDOM from 'react-dom'
 
 
 import React, { useState, useEffect } from 'react';
-import { 
+import {
   Form, Input, Button, Checkbox,
-  DatePicker, Space 
+  DatePicker, Space
 } from 'antd';
-
+import AdminImageUpload from "./AdminImageUpload"
 
 const formItemLayout = {
   labelCol: {
@@ -30,7 +30,7 @@ function onChange(date, dateString) {
   console.log(date, dateString);
 }
 
-const Demo = () => {
+const AdminInputForm = () => {
   const [form] = Form.useForm();
   const [checkNick, setCheckNick] = useState(false);
   useEffect(() => {
@@ -41,7 +41,7 @@ const Demo = () => {
     setCheckNick(e.target.checked);
   };
 
-  const onCheck = async () => {
+  const onSubmit = async () => {
     try {
       const values = await form.validateFields();
       console.log('Success:', values);
@@ -50,8 +50,20 @@ const Demo = () => {
     }
   };
 
+  let onCancel = async () => {
+
+  }
+
   return (
     <Form form={form} name="dynamic_rule">
+
+      <Form.Item
+        {...formItemLayout}
+        name="UploadImage"
+        label="Upload Image"
+      >
+        <AdminImageUpload />
+      </Form.Item>
       <Form.Item
         {...formItemLayout}
         name="FullName"
@@ -65,7 +77,7 @@ const Demo = () => {
       >
         <Input placeholder="Please input your name" />
       </Form.Item>
-      
+
       <Form.Item
         {...formItemLayout}
         name="PhoneNumber"
@@ -153,19 +165,16 @@ const Demo = () => {
         ]}
       ><Input placeholder="Please input your date of birth" />
       </Form.Item>
-      {/* <Form.Item {...formTailLayout} label="Date Of Birth">
-        <DatePicker onChange={onChange} />
-      </Form.Item> */}
 
-      <Form.Item {...formTailLayout}>
-        <Button type="primary" onClick={onCheck}>
-          Check
-        </Button>
+
+      <Form.Item {...formTailLayout} style={{ "textAlign": "left" }}>
+        <span className="formSubmit"><Button onClick={onSubmit}> Submit </Button></span>
+        <span className="formSubmitCancel" style={{ "marginLeft": "5px" }}><Button danger onClick={onCancel}> Cancel </Button></span>
       </Form.Item>
 
-      
+
     </Form>
   );
 };
 
-export default Demo;
+export default AdminInputForm;

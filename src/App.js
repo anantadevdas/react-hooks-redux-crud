@@ -11,6 +11,7 @@ import Tutorial from "./components/Tutorial";
 import TutorialsList from "./components/TutorialsList";
 import { Login } from "./components/Login";
 import {Admin} from "./components/Admin"
+import {Blog} from "./components/Blog"
 
 const { SubMenu } = Menu;
 
@@ -36,10 +37,18 @@ class App extends React.Component {
               </Menu.Item>
               <Menu.Item key="setting:2" icon={<UsergroupAddOutlined />}>User Profile</Menu.Item>
             </Menu.ItemGroup>
+
             <Menu.ItemGroup title="Dashboard">
               <Menu.Item key="setting:3" icon={<AuditOutlined />}>Admin Dashboard</Menu.Item>
               <Menu.Item key="setting:4" icon={<UsergroupAddOutlined />}>User Dashboard</Menu.Item>
             </Menu.ItemGroup>
+
+            <Menu.ItemGroup title="Blog">
+              <Menu.Item key="setting:5" icon={<AuditOutlined />}>
+                <Link to={"/blog"}>Blog </Link>
+              </Menu.Item>
+            </Menu.ItemGroup>
+
           </SubMenu>
         </Menu>
 
@@ -49,6 +58,7 @@ class App extends React.Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/add" component={AddTutorial} />
+            <Route exact path="/blog" component={Blog} />
             <Route path="/tutorials/:id" component={Tutorial} />
           </Switch>
         </div>

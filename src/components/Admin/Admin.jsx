@@ -10,8 +10,8 @@ import { Card, Col, Row,
 import { InfoCircleOutlined, MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import "./Admin.css"
 
-import Demo from "./Demo"
-
+import AdminInputForm from "./AdminInputForm"
+import AdminImageUpload from "./AdminImageUpload"
 
 class AdminComponent extends Component {
 
@@ -22,10 +22,11 @@ class AdminComponent extends Component {
         }
     }
     
-    
     render() {
         console.log('state ', this.state)
-        return (<div className="AdminPortalSection"> <Demo /> </div>)
+        return (<div className="AdminPortalSection"> 
+                    <AdminInputForm /> 
+                </div>)
     }
 
     componentDidMount() {
@@ -35,9 +36,6 @@ class AdminComponent extends Component {
 const mapStateToProps = state => {
     return null
 }
-
 const mapDispatchToProps = dispatch => ({})
-
-
 export const Admin = withRouter(connect(mapStateToProps, mapDispatchToProps)(AdminComponent))
 
