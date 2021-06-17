@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Menu } from 'antd';
-import { MenuOutlined, AuditOutlined,UsergroupAddOutlined, MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import { MenuOutlined, AuditOutlined,UsergroupAddOutlined, EditOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css'
 
 import AddTutorial from "./components/AddTutorial";
@@ -12,6 +12,7 @@ import TutorialsList from "./components/TutorialsList";
 import { Login } from "./components/Login";
 import {Admin} from "./components/Admin"
 import {Blog} from "./components/Blog"
+import { CreateContent } from "./components/Content/CreateContent";
 
 const { SubMenu } = Menu;
 
@@ -35,12 +36,15 @@ class App extends React.Component {
               <Menu.Item key="setting:1" icon={<AuditOutlined />}>
                 <Link to={"/admin"}>Admin Profile </Link>
               </Menu.Item>
-              <Menu.Item key="setting:2" icon={<UsergroupAddOutlined />}>
+              <Menu.Item key="setting:2" icon={<EditOutlined />}>
+                <Link to={"/createContent"}>Create Content </Link>
+              </Menu.Item>
+              <Menu.Item key="setting:3" icon={<UsergroupAddOutlined />}>
               <Link to={"/login"}>Login</Link>
               </Menu.Item>
             </Menu.ItemGroup>  
             <Menu.ItemGroup title="Blog">
-              <Menu.Item key="setting:3" icon={<AuditOutlined />}>
+              <Menu.Item key="setting:4" icon={<AuditOutlined />}>
                 <Link to={"/blog"}>Blog </Link>
               </Menu.Item>
             </Menu.ItemGroup>
@@ -53,6 +57,7 @@ class App extends React.Component {
             <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/admin" component={Admin} />
+            <Route exact path="/createContent" component={CreateContent} />
             <Route exact path="/add" component={AddTutorial} />
             <Route exact path="/blog" component={Blog} />
             <Route path="/tutorials/:id" component={Tutorial} />
