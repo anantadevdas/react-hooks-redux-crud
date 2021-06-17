@@ -24,3 +24,8 @@
 .anticon-user{
     vertical-align: 8px !important;
 }
+
+.slick-dots-bottom li button{
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}

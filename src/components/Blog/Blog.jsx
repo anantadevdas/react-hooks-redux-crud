@@ -10,18 +10,19 @@ import {
     Pagination 
 } from 'antd';
 import { } from '@ant-design/icons';
-import { Carousal } from "./Carousal"
 import { BlogPosts } from "./BlogPosts"
 import "./BlogStyles.css"
 
-
 const contentStyle = {
-    height: '200px',
+    height: '300px',
     color: '#fff',
     lineHeight: '160px',
     textAlign: 'center',
     background: '#364d79',
-};
+    // border:"1px solid lightgrey",
+    borderRadius:"5px",
+    padding:"4px"
+  };
 
 class BlogComponent extends Component {
     constructor(props) {
@@ -35,23 +36,35 @@ class BlogComponent extends Component {
 
 
     render() {
-        return (
-            <div>
-                <Row className="BlogSection">
-                    <Col className="carousal_posts" span={18}>
-                        <Carousal />
-
-                    </Col>
-                    <Col className="tags" span={6}>
-                        All Tags Area
-                    </Col>
-                </Row>
-                <Row>
-                    <BlogPosts />
-                </Row>
-                {/* <Row>
-                    <Pagination defaultCurrent={1} total={50} />
-                </Row> */}
+       return (
+            <div className="carousal_container">
+                <Carousel autoplay>
+                    <div>
+                    <h3 style={contentStyle}>
+                        1
+                        {/* <img style={{"height":"100%","width":"100%"}} src={require('../../Assets/svg_1.svg')} /> */}
+                    </h3>
+                    </div>
+                    <div>
+                    <h3 style={contentStyle}>
+                        2
+                        {/* <img style={{"height":"100%","width":"100%"}} src={require('../../Assets/svg_2.svg')} /> */}
+                    </h3>
+                    </div>
+                    <div>
+                    <h3 style={contentStyle}>
+                        3
+                        {/* <img style={{"height":"100%","width":"100%"}} src={require('../../Assets/svg_3.svg')} /> */}
+                    </h3>
+                    </div>
+                    <div>
+                    <h3 style={contentStyle}>
+                        4
+                        {/* <img style={{"height":"100%","width":"100%"}} src={require('../../Assets/svg_4.svg')} /> */}
+                    </h3>
+                    </div>
+                </Carousel>
+                <Row><BlogPosts /></Row>
             </div>
         )
     }
