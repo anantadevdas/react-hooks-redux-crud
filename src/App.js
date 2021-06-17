@@ -35,16 +35,12 @@ class App extends React.Component {
               <Menu.Item key="setting:1" icon={<AuditOutlined />}>
                 <Link to={"/admin"}>Admin Profile </Link>
               </Menu.Item>
-              <Menu.Item key="setting:2" icon={<UsergroupAddOutlined />}>User Profile</Menu.Item>
-            </Menu.ItemGroup>
-
-            <Menu.ItemGroup title="Dashboard">
-              <Menu.Item key="setting:3" icon={<AuditOutlined />}>Admin Dashboard</Menu.Item>
-              <Menu.Item key="setting:4" icon={<UsergroupAddOutlined />}>User Dashboard</Menu.Item>
-            </Menu.ItemGroup>
-
+              <Menu.Item key="setting:2" icon={<UsergroupAddOutlined />}>
+              <Link to={"/login"}>Login</Link>
+              </Menu.Item>
+            </Menu.ItemGroup>  
             <Menu.ItemGroup title="Blog">
-              <Menu.Item key="setting:5" icon={<AuditOutlined />}>
+              <Menu.Item key="setting:3" icon={<AuditOutlined />}>
                 <Link to={"/blog"}>Blog </Link>
               </Menu.Item>
             </Menu.ItemGroup>
