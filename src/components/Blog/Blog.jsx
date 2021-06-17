@@ -7,7 +7,8 @@ import {
     Input, Space, Button, Switch,
     Form, Radio,
     Carousel,
-    Pagination 
+    Pagination,
+    Image 
 } from 'antd';
 import { } from '@ant-design/icons';
 import { BlogPosts } from "./BlogPosts"
@@ -53,7 +54,7 @@ class BlogComponent extends Component {
                     </div>
                     <div>
                     <h3 style={contentStyle}>
-                        3
+                        3 
                         {/* <img style={{"height":"100%","width":"100%"}} src={require('../../Assets/svg_3.svg')} /> */}
                     </h3>
                     </div>
@@ -64,7 +65,9 @@ class BlogComponent extends Component {
                     </h3>
                     </div>
                 </Carousel>
-                <Row><BlogPosts /></Row>
+                <Row>
+                    {/* <BlogPosts /> */}
+                </Row>
             </div>
         )
     }
