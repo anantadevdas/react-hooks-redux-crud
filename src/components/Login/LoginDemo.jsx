@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom'
 // import Login from 'ant-design-pro/lib/Login';
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Tooltip, Typography } from "antd";
 
 const layout = {
-  labelCol: { span: 4 },
-  wrapperCol: { span: 20 },
+  labelCol: { span: 6 },
+  wrapperCol: { span: 18 },
 };
 const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
@@ -18,7 +18,7 @@ class LoginDemoComponent extends React.Component {
     type: 'tab2',
     autoLogin: true,
   };
-  
+
   onFinish = (values: any) => {
     console.log('Success:', values);
   };
@@ -26,6 +26,14 @@ class LoginDemoComponent extends React.Component {
   onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
+
+  register = ()=>{
+    console.log(" register user")
+  }
+
+  login = ()=>{
+    console.log(" login user")
+  }
 
   render() {
     return (
@@ -43,7 +51,7 @@ class LoginDemoComponent extends React.Component {
         >
           <Input />
         </Form.Item>
-  
+
         <Form.Item
           label="Password"
           name="password"
@@ -51,15 +59,21 @@ class LoginDemoComponent extends React.Component {
         >
           <Input.Password />
         </Form.Item>
-  
-        <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-          <Checkbox>Remember me</Checkbox>
+        <Form.Item
+          label="Verify Password"
+          name="verify password"
+          rules={[{ required: true, message: 'Please verify your password!' }]}
+        >
+          <Input.Password />
         </Form.Item>
-  
-        <Form.Item {...tailLayout}>
-          <Button type="" htmlType="submit">
-            Submit
-          </Button>
+
+
+        <Form.Item {...tailLayout} className="submitButton">
+          <Tooltip title="Email if you have some question">
+            <Typography.Link href="#API">Need Help ?</Typography.Link>
+          </Tooltip>
+          <Button type="" htmlType="submit" className="LoginButton" onClick={this.login}>Login</Button>
+          <Button type="" htmlType="submit" className="LoginButton" onClick={this.register}>Register</Button>
         </Form.Item>
       </Form>
     );

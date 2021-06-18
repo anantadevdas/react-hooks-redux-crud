@@ -71,5 +71,17 @@ body{
     opacity: 0.9;
     margin-top: 40px;
     box-shadow: 1px 1px 10px 5px lightblue;
+    margin-top: 0%;
+    padding-top: 5%;
  } 
-   
+ 
+ .submitButton div{
+  display: flex;
+  margin-left: 0px;
+  flex-direction: column;
+ }
+
+ .LoginButton{
+   margin-top: 10px;
+   margin-bottom: 5px;
+ }
